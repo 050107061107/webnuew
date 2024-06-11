@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Huella Ecológica</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="radio"],
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            height: 100px;
+        }
+
+        .form-group button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .form-group button:hover {
+            background-color: #45a049;
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #e7f3e7;
+            border-radius: 8px;
+            border: 1px solid #c3e6c3;
+            display: none; /* Oculto por defecto */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <h2>Calculadora de Huella Ecológica</h2>
+        <form id="ecoForm">
+            <div class="form-group">
+                <label for="carne">¿Cuántas veces por semana consumes carne?</label>
+                <input type="number" id="carne" name="carne" min="0" max="7" required>
+            </div>
+            <div class="form-group">
+                <label>¿Usas transporte público, bicicleta o caminas regularmente?</label>
+                <input type="radio" id="transporte_si" name="transporte" value="si" required>
+                <label for="transporte_si">Sí</label>
+                <input type="radio" id="transporte_no" name="transporte" value="no" required>
+                <label for="transporte_no">No</label>
+            </div>
+            <div class="form-group">
+                <label for="energia">¿Cuántas horas al día dejas encendida la luz en tu casa?</label>
+                <input type="number" id="energia" name="energia" min="0" max="24"required>
+            </div>
+            <div class="form-group">
+                <label for="reciclaje">¿Reciclas en tu hogar?</label>
+                <input type="radio" id="reciclaje_si" name="reciclaje" value="si" required>
+                <label for="reciclaje_si">Sí</label>
+                <input type="radio" id="reciclaje_no" name="reciclaje" value="no" required>
+                <label for="reciclaje_no">No</label>
+            </div>
+            <div class="form-group">
+                
+            </div><div class="form-group">
+                <label for="carne">¿Cuántas botellas de plastico usas a la semana?</label>
+                <input type="number" id="carne" name="carne" min="0" max="21" required>
+            </div>
+            <div class="form-group">
+                <label>¿Usas focos ahorradores?</label>
+                <input type="radio" id="transporte_si" name="transporte" value="si" required>
+                <label for="transporte_si">Sí</label>
+                <input type="radio" id="transporte_no" name="transporte" value="no" required>
+                <label for="transporte_no">No</label>
+            </div>
+            <div class="form-group">
+                <label for="energia">¿Cuántos litros de agua utiliza en un dia normal?</label>
+                <input type="number" id="energia" name="energia" min="0"  max="50" required>
+            </div>
+            <div class="form-group">
+                <label for="reciclaje">¿Compra productos desechables?</label>
+                <input type="radio" id="reciclaje_si" name="reciclaje" value="si" required>
+                <label for="reciclaje_si">Sí</label>
+                <input type="radio" id="reciclaje_no" name="reciclaje" value="no" required>
+                <label for="reciclaje_no">No</label>
+            </div>
+            <div class="form-group">
+                <button type="button" onclick="calcularImpacto()">Calcular Impacto</button>
+            </div>
+        </form>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calcularImpacto() {
+            // Obtener valores del formulario
+            const carne = document.getElementById('carne').value;
+            const transporte = document.querySelector('input[name="transporte"]:checked').value;
+            const energia = document.getElementById('energia').value;
+            const reciclaje = document.querySelector('input[name="reciclaje"]:checked').value;
+
+            // Variables para calcular el impacto
+            let impacto = 0;
+
+            // Calculo de impacto basado en el consumo de carne
+            impacto += carne * 10;
+
+            // Calculo de impacto basado en el uso de transporte
+            if (transporte === 'no') {
+                impacto += 50;
+            }
+
+            // Calculo de impacto basado en el uso de energía
+            impacto += energia * 5;
+
+            // Calculo de impacto basado en el reciclaje
+            if (reciclaje === 'no') {
+                impacto += 20;
+            }
+
+            // Mostrar el resultado
+            const resultDiv = document.getElementById('result');
+            resultDiv.style.display = 'block';
+            resultDiv.innerHTML = `Tu impacto ecológico es de ${impacto} puntos.`;
+
+            // Resetear el formulario
+            document.getElementById('ecoForm').reset();
+        }
+    </script>
+
+</body>
+</html>
+
+

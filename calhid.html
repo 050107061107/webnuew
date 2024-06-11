@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Huella de Carbono</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        .question label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Calculadora de Huella de Carbono</h1>
+    <form id="carbonForm">
+        <div class="question">
+            <label for="q1">1. ¿Cuántos kilómetros conduces al día?</label>
+            <select id="q1" name="q1">
+                <option value="0">0 km</option>
+                <option value="1">1-10 km</option>
+                <option value="2">11-20 km</option>
+                <option value="3">21-50 km</option>
+                <option value="4">Más de 50 km</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q2">2. ¿Con qué frecuencia utilizas transporte público?</label>
+            <select id="q2" name="q2">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q3">3. ¿Cuántos vuelos tomas al año?</label>
+            <select id="q3" name="q3">
+                <option value="0">Ninguno</option>
+                <option value="1">1-2</option>
+                <option value="2">3-5</option>
+                <option value="3">6-10</option>
+                <option value="4">Más de 10</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q4">4. ¿Qué tipo de vivienda tienes?</label>
+            <select id="q4" name="q4">
+                <option value="0">Apartamento pequeño</option>
+                <option value="1">Apartamento grande</option>
+                <option value="2">Casa pequeña</option>
+                <option value="3">Casa grande</option>
+                <option value="4">Mansión</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q5">5. ¿Con qué frecuencia comes carne?</label>
+            <select id="q5" name="q5">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q6">6. ¿Cuántos electrodomésticos grandes tienes en tu hogar?</label>
+            <select id="q6" name="q6">
+                <option value="0">Ninguno</option>
+                <option value="1">1-2</option>
+                <option value="2">3-5</option>
+                <option value="3">6-10</option>
+                <option value="4">Más de 10</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q7">7. ¿Con qué frecuencia reciclas?</label>
+            <select id="q7" name="q7">
+                <option value="4">Siempre</option>
+                <option value="3">Frecuentemente</option>
+                <option value="2">A veces</option>
+                <option value="1">Rara vez</option>
+                <option value="0">Nunca</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q8">8. ¿Con qué frecuencia usas calefacción en invierno?</label>
+            <select id="q8" name="q8">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q9">9. ¿Cuánta electricidad usas al mes?</label>
+            <select id="q9" name="q9">
+                <option value="0">Menos de 100 kWh</option>
+                <option value="1">100-200 kWh</option>
+                <option value="2">201-300 kWh</option>
+                <option value="3">301-400 kWh</option>
+                <option value="4">Más de 400 kWh</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q10">10. ¿Con qué frecuencia compras productos locales?</label>
+            <select id="q10" name="q10">
+                <option value="4">Siempre</option>
+                <option value="3">Frecuentemente</option>
+                <option value="2">A veces</option>
+                <option value="1">Rara vez</option>
+                <option value="0">Nunca</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q11">11. ¿Cuánta basura produces al mes?</label>
+            <select id="q11" name="q11">
+                <option value="0">Menos de 1 bolsa</option>
+                <option value="1">1-2 bolsas</option>
+                <option value="2">3-4 bolsas</option>
+                <option value="3">5-6 bolsas</option>
+                <option value="4">Más de 6 bolsas</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q12">12. ¿Con qué frecuencia compras ropa nueva?</label>
+            <select id="q12" name="q12">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q13">13. ¿Usas productos reutilizables en tu hogar?</label>
+            <select id="q13" name="q13">
+                <option value="4">Siempre</option>
+                <option value="3">Frecuentemente</option>
+                <option value="2">A veces</option>
+                <option value="1">Rara vez</option>
+                <option value="0">Nunca</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q14">14. ¿Qué tipo de energía usas en tu hogar?</label>
+            <select id="q14" name="q14">
+                <option value="0">Renovable</option>
+                <option value="1">Gas natural</option>
+                <option value="2">Electricidad convencional</option>
+                <option value="3">Carbón</option>
+                <option value="4">Combustible fósil</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q15">15. ¿Cuánta agua usas al día?</label>
+            <select id="q15" name="q15">
+                <option value="0">Menos de 50 litros</option>
+                <option value="1">50-100 litros</option>
+                <option value="2">101-200 litros</option>
+                <option value="3">201-400 litros</option>
+                <option value="4">Más de 400 litros</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q16">16. ¿Qué tipo de vehículo conduces?</label>
+            <select id="q16" name="q16">
+                <option value="0">Eléctrico</option>
+                <option value="1">Híbrido</option>
+                <option value="2">Gasolina</option>
+                <option value="3">Diésel</option>
+                <option value="4">Otro</option>
+            </select>
+        </div>
+       <div class="question">
+            <label for="q17">17. ¿Cuántos productos electrónicos pequeños (como teléfonos, tabletas, etc.) tienes?</label>
+            <select id="q17" name="q17">
+                <option value="0">Ninguno</option>
+                <option value="1">1-2</option>
+                <option value="2">3-5</option>
+                <option value="3">6-10</option>
+                <option value="4">Más de 10</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q18">18. ¿Con qué frecuencia usas aire acondicionado en verano?</label>
+            <select id="q18" name="q18">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q19">19. ¿Con qué frecuencia comes alimentos procesados?</label>
+            <select id="q19" name="q19">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+        <div class="question">
+            <label for="q20">20. ¿Con qué frecuencia usas productos desechables (como platos, cubiertos, etc.)?</label>
+            <select id="q20" name="q20">
+                <option value="4">Nunca</option>
+                <option value="3">Rara vez</option>
+                <option value="2">A veces</option>
+                <option value="1">Frecuentemente</option>
+                <option value="0">Siempre</option>
+            </select>
+        </div>
+  
+        <button type="button" onclick="calculateCarbonFootprint()">Calcular Huella de Carbono</button>
+    </form>
+    <div class="result" id="result"></div>
+
+    <script>
+        function calculateCarbonFootprint() {
+            let totalScore = 0;
+            for (let i = 1; i <= 20; i++) {
+                let questionValue = parseInt(document.getElementById('q' + i).value);
+                totalScore += questionValue;
+            }
+            let maxScore = 4 * 20; // El valor máximo posible es 4 por pregunta, con 20 preguntas en total
+            let percentage = (totalScore / maxScore) * 100;
+            let resultText = 'Tu huella de carbono es: ' + totalScore + ' puntos. Porcentaje: ' + percentage.toFixed(2) + '%';
+            
+            // Mostrar el resultado con el icono de huella de carbono
+            document.getElementById('result').innerHTML = `
+               
+                <div>${resultText}</div>
+            `;
+        }
+    </script>
+</body>
+</html

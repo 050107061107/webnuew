@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Huella Ecológica</title>
+    
+</head>
+<body>
+
+<h1>Calculadora de Huella Ecológica</h1>
+
+<div class="calculator">
+    <form id="ecoCalculator">
+        <div class="form-group">
+            <label for="electricidad">Electricidad consumida (kWh/mes):</label>
+            <input type="number" id="electricidad" name="electricidad" required>
+        </div>
+        <div class="form-group">
+            <label for="gas">Gas consumido (m3/mes):</label>
+            <input type="number" id="gas" name="gas" required>
+        </div>
+        <div class="form-group">
+            <label for="transporte">Transporte (km/mes):</label>
+            <input type="number" id="transporte" name="transporte" required>
+        </div>
+        <div class="form-group">
+            <label for="residuos">Residuos (kg/mes):</label>
+            <input type="number" id="residuos" name="residuos" required>
+        </div>
+        <div class="form-group">
+            <label for="agua">Agua (m3/mes):</label>
+            <input type="number" id="agua" name="agua" required>
+        </div>
+        <button type="button" onclick="calcularHuella()">Calcular Huella Ecológica</button>
+    </form>
+
+    <div id="resultado" class="resultado">
+        <h2>Resultado:</h2>
+        <p id="huellaResultado">---</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
